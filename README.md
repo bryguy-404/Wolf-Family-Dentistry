@@ -51,7 +51,11 @@ The embed loaded at 320, 375, 768 and 1280px without horizontal overflow or brow
 
 The source contains two different email addresses and an old agency copyright credit; these are preserved and documented for review. Production deployment and DNS changes remain pending.
 
-For Cloudflare Pages, use the repository root, `npm run build`, and output directory `wolf-family-dentistry/dist`, with Node 22. Hosting remains undecided until deployment is requested.
+Cloudflare Pages uses the repository root, `npm run build`, and output directory `wolf-family-dentistry/dist`, with Node 22. The GitHub repository is connected to Cloudflare for deployment.
+
+The root lockfile includes the optional native binaries for Linux and macOS. If npm regenerates it from an existing Mac `node_modules` folder, it can omit Linux bindings and break Cloudflare's clean install. Regenerate in a clean temporary workspace without `node_modules`, retain the existing dependency versions, and verify with a fresh Linux `npm ci` and build before committing a lockfile change.
+
+The September 22 deployment fix was verified in a clean Linux x64 container with Node 22.22.0 and npm 10.9.2: `npm ci`, `npm run check` and `npm run build` passed, producing all eight pages. The previous lockfile reproduced the native-binding failure in Linux; no existing package versions were removed by the repaired lockfile.
 
 ## Domain cutover audit
 
