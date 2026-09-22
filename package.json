@@ -1,0 +1,15 @@
+{
+  "name": "wolf-family-dentistry-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": ["wolf-family-dentistry"],
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "npm run dev --workspace=wolf-family-dentistry --",
+    "build": "npm run build --workspace=wolf-family-dentistry --",
+    "preview": "npm run preview --workspace=wolf-family-dentistry --",
+    "check": "npm run check --workspace=wolf-family-dentistry --",
+    "qa:visual": "npm run qa:visual --workspace=wolf-family-dentistry --",
+    "qa:browser": "npm run qa:browser --workspace=wolf-family-dentistry --"
+  }
+}
