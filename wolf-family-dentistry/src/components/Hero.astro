@@ -1,12 +1,309 @@
 ---
 import SourceCopy from './SourceCopy.astro';
+import content from '../data/source-content.json';
+
+// Keep every word of the original hero; add presentation markup only.
+const heroCopy = content.home.blocks[0].html
+  .replace(/<(\/?)h3>/g, '<$1h1>')
+  .replace('Comfortable!', '<em>Comfortable!</em>')
+  .replace('1988', '<strong>1988</strong>');
 ---
-<section class="home-hero relative isolate overflow-hidden bg-navy">
-  <img src="/images/practice-exterior.jpg" width="1800" height="1013" alt="Wolf Family Dentistry office entrance in La Porte, Indiana" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
-  <div class="absolute inset-0 bg-navy/75 lg:bg-linear-to-r lg:from-navy lg:via-navy/80 lg:to-navy/35"></div>
-  <div class="absolute -right-24 top-16 h-72 w-72 rounded-full border border-white/20" aria-hidden="true"></div>
-  <div class="page-shell relative py-24 text-white lg:py-32">
-    <SourceCopy page="home" block={0} hero class="hero-copy max-w-3xl" />
-    <SourceCopy page="home" block={1} class="mt-9 button-copy" />
+<section class="home-hero" aria-label="Welcome to Wolf Family Dentistry">
+  <div class="hero-photograph">
+    <img
+      src="/images/practice-exterior.jpg"
+      width="1800"
+      height="1013"
+      alt="The welcoming entrance to Wolf Family Dentistry in La Porte, Indiana"
+      fetchpriority="high"
+    />
+    <div class="photo-caption">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </svg>
+      <span>La Porte, Indiana</span>
+    </div>
+  </div>
+
+  <div class="hero-sweep" aria-hidden="true"></div>
+  <div class="hero-contour" aria-hidden="true"></div>
+
+  <div class="page-shell hero-layout">
+    <div class="hero-content">
+      <div class="hero-eyebrow" aria-hidden="true">
+        <span></span> Wolf Family Dentistry, P.C.
+      </div>
+      <div class="source-copy hero-copy" data-source="home:0" set:html={heroCopy} />
+      <div class="hero-actions">
+        <SourceCopy page="home" block={1} class="hero-action button-copy" />
+        <a class="practice-link" href="/about-us/">
+          Explore Our Practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M5 12h14m-6-6 6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .home-hero {
+    --hero-paper: #f6f5ef;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--hero-paper);
+    color: var(--color-navy);
+  }
+
+  .hero-layout {
+    position: relative;
+    z-index: 3;
+    padding-block: 44px 36px;
+  }
+
+  .hero-content { min-width: 0; }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    color: var(--color-green-ink);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .hero-eyebrow span {
+    width: 28px;
+    height: 1px;
+    flex-shrink: 0;
+    background: currentColor;
+  }
+
+  .hero-content :global(h1) {
+    max-width: 10ch;
+    font-size: clamp(42px, 7.8vw, 68px);
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -.055em;
+  }
+
+  .hero-content :global(h1 em) {
+    position: relative;
+    display: block;
+    width: fit-content;
+    margin-top: 2px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.18em;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -.055em;
+    color: var(--color-green-ink);
+  }
+
+  .hero-content :global(h1 em::after) {
+    content: '';
+    position: absolute;
+    inset: auto 1% -9px 1%;
+    height: 13px;
+    border-top: 2px solid #91ab80;
+    border-radius: 50%;
+    transform: rotate(-2deg);
+  }
+
+  .hero-content :global(.hero-copy p) {
+    margin-top: 32px;
+    color: #566057;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .hero-content :global(.hero-copy strong) {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .hero-content :global(.hero-action a) {
+    gap: 20px;
+    padding: 17px 24px;
+    background: var(--color-green-action);
+    box-shadow: 0 6px 18px #17285e12;
+    font-size: 17px;
+  }
+
+  .hero-content :global(.hero-action a::after) {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .hero-content :global(.hero-action a:hover) { background: var(--color-green-hover); }
+
+  .practice-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #17285e40;
+    text-underline-offset: 6px;
+    transition: color .2s;
+  }
+
+  .practice-link svg {
+    width: 20px;
+    height: 20px;
+    transition: transform .2s;
+  }
+
+  .practice-link:hover { color: var(--color-green-ink); }
+  .practice-link:hover svg { transform: translateX(4px); }
+
+  .hero-photograph {
+    position: relative;
+    margin-top: -20px;
+    padding-bottom: 68px;
+    background: var(--color-navy);
+  }
+
+  .hero-photograph img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.55;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-photograph::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset: -1px 0 auto;
+    height: 30px;
+    background: var(--hero-paper);
+    clip-path: ellipse(65% 100% at 25% 0%);
+  }
+
+  .photo-caption {
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    bottom: 58px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--hero-paper);
+    color: var(--color-navy);
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: .04em;
+  }
+
+  .photo-caption svg { width: 16px; height: 16px; }
+  .hero-sweep, .hero-contour { display: none; }
+
+  @media (max-width: 899px) {
+    .home-hero { display: flex; flex-direction: column; }
+    .hero-layout { order: -1; }
+    .hero-photograph { padding-bottom: 0; }
+    .hero-photograph img { height: calc(100vw / 1.55 + 68px); aspect-ratio: auto; }
+  }
+
+  @media (min-width: 480px) and (max-width: 899px) {
+    .hero-actions { flex-direction: row; align-items: center; gap: 28px; }
+    .hero-photograph img { height: calc(100vw / 1.95 + 68px); }
+  }
+
+  @media (min-width: 900px) {
+    .hero-layout {
+      min-height: 660px;
+      display: flex;
+      align-items: center;
+      padding-block: 70px 112px;
+      pointer-events: none;
+    }
+
+    .hero-content { width: 52%; pointer-events: auto; }
+    .hero-content :global(h1) { font-size: clamp(54px, 4.8vw, 72px); }
+    .hero-content :global(.hero-copy p) { font-size: 19px; margin-top: 36px; }
+    .hero-eyebrow { margin-bottom: 30px; font-size: 12px; }
+    .hero-actions { margin-top: 34px; }
+
+    .hero-photograph {
+      position: absolute;
+      inset: 0 0 0 36%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero-photograph img {
+      height: 100%;
+      aspect-ratio: auto;
+      object-position: 55% center;
+    }
+
+    .hero-photograph::before {
+      inset: auto 0 0;
+      height: 120px;
+      background: linear-gradient(transparent, #0f1b4340);
+      clip-path: none;
+    }
+
+    .hero-sweep {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      inset: -20% auto -24% -20%;
+      width: 72%;
+      border-radius: 0 50% 50% 0;
+      background: var(--hero-paper);
+      transform: rotate(-8deg);
+    }
+
+    .hero-contour {
+      display: block;
+      position: absolute;
+      z-index: 2;
+      inset: -19% auto -23% -19%;
+      width: 72%;
+      border-right: 1px solid #a5b695;
+      border-radius: 0 50% 50% 0;
+      transform: rotate(-8deg);
+      pointer-events: none;
+    }
+
+    .photo-caption {
+      right: max(32px, calc((100vw - 1216px) / 2));
+      bottom: 72px;
+      padding: 13px 20px;
+      font-size: 14px;
+      box-shadow: 0 4px 20px #0f1b4312;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .hero-actions { flex-direction: row; align-items: center; gap: 24px; }
+    .hero-layout { min-height: 690px; }
+  }
+
+</style>
