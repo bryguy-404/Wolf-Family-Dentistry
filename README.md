@@ -2,7 +2,7 @@
 
 The Astro site lives in `wolf-family-dentistry/`. Commands work from this workspace root. Node 22.12+ is required.
 
-GitHub repository: https://github.com/alphadogagency/Wolf-Family-Dentistry. Source code, site media, patient PDF and migration evidence are versioned. Dependencies, build output, local QA screenshots, environment secrets and duplicate ZIP backups are excluded. The ZIP backup remains available locally under `wolf-family-dentistry/migration/backups/`.
+GitHub repository: https://github.com/bryguy-404/Wolf-Family-Dentistry. Source code, site media, patient PDF and migration evidence are versioned. Dependencies, build output, local QA screenshots, environment secrets and duplicate ZIP backups are excluded. The ZIP backup remains available locally under `wolf-family-dentistry/migration/backups/`.
 
 ```sh
 npm install
