@@ -51,7 +51,7 @@ The embed loaded at 320, 375, 768 and 1280px without horizontal overflow or brow
 
 The source contains two different email addresses and an old agency copyright credit; these are preserved and documented for review. Production deployment and DNS changes remain pending.
 
-Cloudflare Pages uses the repository root, `npm run build`, and output directory `wolf-family-dentistry/dist`, with Node 22. The GitHub repository is connected to Cloudflare for deployment.
+Cloudflare Pages uses the repository root, `npm run build`, and output directory `wolf-family-dentistry/dist`, with Node 22. The root `wrangler.toml` declares this output path so Pages deploys the workspace's built files instead of looking for a root-level `dist`. The GitHub repository is connected to Cloudflare for deployment.
 
 The root lockfile includes the optional native binaries for Linux and macOS. If npm regenerates it from an existing Mac `node_modules` folder, it can omit Linux bindings and break Cloudflare's clean install. Regenerate in a clean temporary workspace without `node_modules`, retain the existing dependency versions, and verify with a fresh Linux `npm ci` and build before committing a lockfile change.
 

@@ -1,0 +1,3 @@
+name = "wolf-family-dentistry"
+pages_build_output_dir = "./wolf-family-dentistry/dist"
+compatibility_date = "2026-09-22"
