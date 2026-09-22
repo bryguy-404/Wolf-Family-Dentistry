@@ -3,6 +3,7 @@ import SourceCopy from './SourceCopy.astro';
 import content from '../data/source-content.json';
 import { navigation } from '../lib/site';
 const compact = ['/cherry-payment/', '/sitemap/'].includes(Astro.url.pathname);
+const currentYear = new Date().getFullYear();
 ---
 <footer class="bg-deep-navy text-white">
   {!compact && <div class="page-shell grid gap-10 py-16 md:grid-cols-3">
@@ -23,6 +24,14 @@ const compact = ['/cherry-payment/', '/sitemap/'].includes(Astro.url.pathname);
       {navigation.map(link => <a href={link.href} class="hover:text-white">{link.label}</a>)}
       <a href="/sitemap/" class="hover:text-white">Sitemap</a>
     </nav>
-    <p class="mt-7 text-center text-sm text-white/65"><a href="https://www.alphadogagency.com/" class="underline hover:text-white">Marketing: Alpha Dog Agency</a></p>
+    <p class="mt-7 text-center text-sm leading-relaxed text-white/65">© Copyright <span data-copyright-year>{currentYear}</span> Wolf Family Dentistry, P.C. | All Rights Reserved | <a href="https://www.alphadogagency.com/" class="underline hover:text-white">Marketing: Alpha Dog Agency</a></p>
   </div>
 </footer>
+
+<script>
+  // Refresh the build-time fallback so the static site needs no yearly redeploy.
+  const year = String(new Date().getFullYear());
+  document.querySelectorAll('[data-copyright-year]').forEach((element) => {
+    element.textContent = year;
+  });
+</script>
