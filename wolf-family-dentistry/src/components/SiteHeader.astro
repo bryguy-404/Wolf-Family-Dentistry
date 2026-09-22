@@ -1,0 +1,56 @@
+---
+import { navigation } from '../lib/site';
+const path = Astro.url.pathname;
+---
+<div class="bg-plum px-5 py-2 text-center text-sm font-semibold text-white">
+  <a href="tel:+12193623730">Call for an Appointment! 219-362-3730</a>
+</div>
+<header class="sticky top-0 z-50 border-b border-navy/10 bg-white">
+  <div class="page-shell flex h-20 items-center justify-between gap-6 sm:h-24">
+    <a href="/" aria-label="Wolf Family Dentistry home" class="shrink-0">
+      <img src="/images/wolf-logo.png" width="1192" height="247" alt="Wolf Family Dentistry" class="h-12 w-auto max-w-[185px] object-contain sm:h-14 sm:max-w-[215px]" />
+    </a>
+    <nav class="hidden items-center gap-5 text-sm font-semibold xl:flex" aria-label="Primary navigation">
+      {navigation.map(link => <a href={link.href} aria-current={path === link.href ? 'page' : undefined} class="nav-link">{link.label}</a>)}
+    </nav>
+    <button id="menu-toggle" hidden type="button" aria-controls="mobile-menu" aria-expanded="false" class="grid h-11 w-11 place-items-center rounded-full border border-navy/15 text-navy xl:hidden">
+      <span class="sr-only">Toggle navigation</span>
+      <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-navy/10 bg-white px-5 py-4 xl:hidden">
+    <nav class="grid gap-1 font-semibold" aria-label="Mobile navigation">
+      {navigation.map(link => <a href={link.href} aria-current={path === link.href ? 'page' : undefined} class="nav-link rounded-xl px-3 py-3 hover:bg-sage">{link.label}</a>)}
+      <a href="tel:+12193623730" class="button mt-3">Call for an Appointment! 219-362-3730</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-menu');
+  if (button && menu) {
+    // Leave the mobile links available when JavaScript is disabled.
+    button.hidden = false;
+    menu.hidden = true;
+    const closeMenu = (restoreFocus = false) => {
+      menu.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) button.focus();
+    };
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      menu.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+    });
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => closeMenu());
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) closeMenu(true);
+    });
+    document.addEventListener('click', (event) => {
+      if (event.target instanceof Node && !menu.contains(event.target) && !button.contains(event.target)) closeMenu();
+    });
+    window.matchMedia('(min-width: 1280px)').addEventListener('change', () => closeMenu());
+  }
+</script>

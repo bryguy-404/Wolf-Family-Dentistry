@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SourceCopy from '../components/SourceCopy.astro';
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import content from '../data/source-content.json';
+const page = content['about-us'];
+---
+<Layout title={page.title} description={page.description}>
+  <PageHero page="about-us" />
+  <section class="section-space">
+    <div class="page-shell split-layout">
+      <img src="/images/practice-sign.jpg" width="1080" height="608" alt="Wolf Family Dentistry sign in La Porte, Indiana" class="feature-image" />
+      <div><SourceCopy page="about-us" block={2} class="section-copy" /><SourceCopy page="about-us" block={3} class="button-copy mt-8" /></div>
+    </div>
+  </section>
+  <section class="section-space bg-ivory">
+    <div class="page-shell">
+      <div class="max-w-4xl"><SourceCopy page="about-us" block={4} class="section-copy" /></div>
+      <img src="/images/practice-team.jpg" width="1080" height="608" alt="The Wolf Family Dentistry team" loading="lazy" class="mt-12 aspect-video w-full rounded-[32px] object-cover shadow-soft" />
+    </div>
+  </section>
+  <section class="section-space">
+    <div class="page-shell faq-layout">
+      <SourceCopy page="about-us" block={6} class="section-copy" />
+      <div class="space-y-4">
+        {page.blocks.slice(8, 18).map(block => {
+          const answer = block.html.replace(/<h3[^>]*>[\s\S]*?<\/h3>/, '');
+          return <details class="faq-item" data-source={`about-us:${block.id}`}>
+            <summary>{block.heading}<span aria-hidden="true">+</span></summary>
+            <div class="source-copy faq-answer" set:html={answer} />
+          </details>;
+        })}
+      </div>
+    </div>
+  </section>
+  <section class="section-space bg-sage">
+    <div class="page-shell split-layout">
+      <SourceCopy page="about-us" block={18} class="section-copy" />
+      <img src="/images/about-smile.jpg" width="800" height="600" alt="A smiling couple" loading="lazy" class="feature-image" />
+    </div>
+  </section>
+  <AppointmentCTA page="about-us" />
+</Layout>

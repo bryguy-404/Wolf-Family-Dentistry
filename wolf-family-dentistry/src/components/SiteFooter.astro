@@ -1,0 +1,28 @@
+---
+import SourceCopy from './SourceCopy.astro';
+import content from '../data/source-content.json';
+import { navigation } from '../lib/site';
+const compact = ['/cherry-payment/', '/sitemap/'].includes(Astro.url.pathname);
+---
+<footer class="bg-deep-navy text-white">
+  {!compact && <div class="page-shell grid gap-10 py-16 md:grid-cols-3">
+    <div>
+      <a href="/" class="mb-6 inline-block rounded-2xl bg-white p-3"><img src="/images/wolf-logo.png" width="1192" height="247" alt="Wolf Family Dentistry" class="h-12 w-auto max-w-[205px] object-contain" /></a>
+      <SourceCopy page="home" block={19} class="footer-copy" />
+      <SourceCopy page="home" block={20} class="footer-copy mt-4" />
+    </div>
+    <div>
+      <SourceCopy page="home" block={21} class="footer-copy" />
+      <SourceCopy page="home" block={22} class="footer-copy mt-5" />
+    </div>
+    <SourceCopy page="home" block={23} class="footer-copy" />
+  </div>}
+  {!compact && <div class="page-shell pb-12"><iframe src={content.home.embeds[1].src} title="Map to Wolf Family Dentistry, 3550 W Johnson Rd, La Porte" loading="lazy" class="h-56 w-full rounded-[24px] border-0" allowfullscreen></iframe></div>}
+  <div class="border-t border-white/10 px-5 py-8">
+    <nav aria-label="Footer navigation" class="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-6 gap-y-4 text-sm text-white/80">
+      {navigation.map(link => <a href={link.href} class="hover:text-white">{link.label}</a>)}
+      <a href="/sitemap/" class="hover:text-white">Sitemap</a>
+    </nav>
+    <p class="mt-7 text-center text-sm text-white/65">© 2019 CGI Communications Inc. Developed by <a href="https://www.cgicompany.com/elocallink.html" class="underline">e·LocalLink</a> ™.</p>
+  </div>
+</footer>

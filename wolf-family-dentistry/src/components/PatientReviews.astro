@@ -1,0 +1,20 @@
+---
+import content from '../data/source-content.json';
+interface Props { page?: 'home' | 'testimonials'; }
+const { page = 'home' } = Astro.props;
+const reviews = content[page].reviews;
+---
+<div class="reviews-grid">
+  {reviews.map((review, index) => (
+    <figure class="review-card" data-source-review={`${page}:${index}`}>
+      <div class="flex items-center justify-between gap-4">
+        <figcaption class="font-display font-bold">{review.name}</figcaption>
+        <span class="text-sm text-muted">{review.attribution}</span>
+      </div>
+      <p class="my-5 tracking-[.15em] text-green-ink" aria-label={`${review.stars} out of 5 stars`}>{'★'.repeat(review.stars)}</p>
+      <blockquote>{review.text}</blockquote>
+      <p class="mt-6 text-xs leading-5 text-muted">{review.verification}</p>
+    </figure>
+  ))}
+</div>
+<p class="mt-7 text-center text-sm text-muted">powered by <a href="https://nextadagency.com/" class="underline">NEXT! Ad Agency</a></p>

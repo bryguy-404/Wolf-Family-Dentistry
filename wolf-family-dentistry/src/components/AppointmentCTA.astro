@@ -1,0 +1,12 @@
+---
+import SourceCopy from './SourceCopy.astro';
+interface Props { page?: 'home' | 'about-us' | 'maintain' | 'restore'; }
+const { page = 'home' } = Astro.props;
+const blocks = { home: 14, 'about-us': 20, maintain: 8, restore: 8 };
+---
+<section class="px-5 py-14 sm:px-8">
+  <div class="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-navy px-7 py-12 text-white sm:px-12">
+    <div class="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-plum/60" aria-hidden="true"></div>
+    <SourceCopy page={page} block={blocks[page]} class="relative cta-copy max-w-4xl" />
+  </div>
+</section>

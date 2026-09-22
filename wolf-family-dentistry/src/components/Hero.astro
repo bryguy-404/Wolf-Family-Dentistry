@@ -1,0 +1,12 @@
+---
+import SourceCopy from './SourceCopy.astro';
+---
+<section class="home-hero relative isolate overflow-hidden bg-navy">
+  <img src="/images/practice-exterior.jpg" width="1800" height="1013" alt="Wolf Family Dentistry office entrance in La Porte, Indiana" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
+  <div class="absolute inset-0 bg-navy/75 lg:bg-linear-to-r lg:from-navy lg:via-navy/80 lg:to-navy/35"></div>
+  <div class="absolute -right-24 top-16 h-72 w-72 rounded-full border border-white/20" aria-hidden="true"></div>
+  <div class="page-shell relative py-24 text-white lg:py-32">
+    <SourceCopy page="home" block={0} hero class="hero-copy max-w-3xl" />
+    <SourceCopy page="home" block={1} class="mt-9 button-copy" />
+  </div>
+</section>

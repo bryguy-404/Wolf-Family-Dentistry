@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import PatientReviews from '../components/PatientReviews.astro';
+import content from '../data/source-content.json';
+---
+<Layout title={content.testimonials.title} description={content.testimonials.description}>
+  <PageHero page="testimonials" />
+  <section class="section-space bg-ivory"><div class="page-shell"><PatientReviews page="testimonials" /></div></section>
+</Layout>

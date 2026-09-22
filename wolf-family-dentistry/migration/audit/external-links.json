@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://goo.gl/maps/aFSsBBNKMcMWArLx7",
+    "status": 200,
+    "finalUrl": "https://www.google.com/maps/place/Wolf+Family+Dentistry/@41.6418031,-86.770501,17z/data=!4m5!3m4!1s0x88110e7a473f65b1:0x615193223736a498!8m2!3d41.64167!4d-86.7682279?shorturl=1",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://hybridgeimplants.com/",
+    "status": 403,
+    "finalUrl": "https://hybridgeimplants.com/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://nextadagency.com/",
+    "status": 200,
+    "finalUrl": "https://nextadagency.com/",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://reviews.nextadagency.com/wolf-family-dentistry-156874229224026/review-us?dashboard=1",
+    "status": 200,
+    "finalUrl": "https://reviews.nextadagency.com/wolf-family-dentistry-156874229224026/review-us?dashboard=1",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://search.google.com/local/writereview?placeid=ChIJsWU_R3oOEYgRmKQ2NyKTUWE",
+    "status": 200,
+    "finalUrl": "https://accounts.google.com/v3/signin/identifier?continue=https://search.google.com/local/writereview?placeid%3DChIJsWU_R3oOEYgRmKQ2NyKTUWE&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-1305648673:1790107682456096",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.cgicompany.com/elocallink.html",
+    "status": 200,
+    "finalUrl": "https://cgidigital.com/",
+    "contentType": "text/html; charset=UTF-8"
+  }
+]

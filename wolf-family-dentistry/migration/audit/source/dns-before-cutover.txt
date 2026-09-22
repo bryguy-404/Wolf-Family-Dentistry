@@ -1,0 +1,10 @@
+wolffamilydentistryin.com. 600	IN	A	35.231.8.143
+wolffamilydentistryin.com. 3600	IN	MX	0 wolffamilydentistryin-com.mail.protection.outlook.com.
+wolffamilydentistryin.com. 3600	IN	TXT	"v=spf1 include:spf.protection.outlook.com -all"
+wolffamilydentistryin.com. 3600	IN	TXT	"google-site-verification=i_X7uJUSsc31pv4iwVNK-2P_KiHHRzFfGcOwwdhlSKQ"
+wolffamilydentistryin.com. 3600	IN	NS	ns74.domaincontrol.com.
+wolffamilydentistryin.com. 3600	IN	NS	ns73.domaincontrol.com.
+www.wolffamilydentistryin.com. 3600 IN	CNAME	wolffamilydentistryin.com.
+wolffamilydentistryin.com. 600	IN	A	35.231.8.143
+www.wolffamilydentistryin.com. 3600 IN	CNAME	wolffamilydentistryin.com.
+www.wolffamilydentistryin.com. 3600 IN	CNAME	wolffamilydentistryin.com.

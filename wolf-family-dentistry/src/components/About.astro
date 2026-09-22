@@ -1,0 +1,30 @@
+---
+import SourceCopy from './SourceCopy.astro';
+---
+<section class="section-space">
+  <div class="page-shell split-layout">
+    <div class="relative pb-12 pr-8">
+      <img src="/images/smile.jpg" width="900" height="900" alt="A woman smiling" loading="lazy" class="aspect-[4/5] w-full rounded-[32px] object-cover shadow-soft" />
+      <img src="/images/practice-sign.jpg" width="1080" height="608" alt="Wolf Family Dentistry sign outside the La Porte practice" loading="lazy" class="absolute bottom-0 right-0 w-[64%] rounded-[24px] border-8 border-white shadow-soft" />
+    </div>
+    <div>
+      <SourceCopy page="home" block={6} class="section-copy" />
+      <div class="mt-8 overflow-hidden rounded-[24px] bg-navy shadow-soft">
+        <video controls playsinline preload="none" poster="/media/wolf-family-dentistry-poster.jpg" aria-label="Wolf Family Dentistry practice video" class="aspect-video w-full">
+          <source src="/media/wolf-family-dentistry.mp4" type="video/mp4" />
+          <track kind="captions" src="/media/wolf-family-dentistry.en.vtt" srclang="en" label="English" />
+          <a href="/media/wolf-family-dentistry.mp4">Wolf Family Dentistry practice video</a>
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-space bg-navy text-white">
+  <div class="page-shell">
+    <SourceCopy page="home" block={8} class="section-copy max-w-4xl" />
+    <div class="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-16">
+      <SourceCopy page="home" block={9} />
+      <SourceCopy page="home" block={10} />
+    </div>
+  </div>
+</section>

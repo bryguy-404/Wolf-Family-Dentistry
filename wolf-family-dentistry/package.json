@@ -9,7 +9,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "qa:visual": "node visual-diff.mjs --built http://localhost:4321 --design ./design/index.html --blueprint ./BLUEPRINT.md --threshold 85",
+    "qa:browser": "node scripts/migration-check.mjs",
+    "qa:migration": "node scripts/migration-check.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.1",
@@ -20,5 +24,13 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.128.0",
+    "@astrojs/check": "^0.9.10",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.63.0",
+    "pngjs": "^7.0.0",
+    "typescript": "^6.0.3"
   }
 }

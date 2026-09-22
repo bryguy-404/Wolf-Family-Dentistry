@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import content from '../data/source-content.json';
+---
+<Layout title={content.sitemap.title} description={content.sitemap.description}>
+  <section class="section-space"><div class="page-shell sitemap-copy source-copy" data-source-sitemap set:html={content.sitemap.html} /></section>
+</Layout>

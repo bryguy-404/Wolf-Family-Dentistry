@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Wolf Family Dentistry | Comfortable Dental Care in La Porte',
+  description = 'Gentle, modern family dentistry in La Porte, Indiana. Call Wolf Family Dentistry to plan your visit.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Wolf Family Dentistry" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/images/practice-exterior.jpg', Astro.site)} />
+    <meta property="og:image:alt" content="Wolf Family Dentistry office in La Porte, Indiana" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  </head>
+  <body id="top" class="overflow-x-hidden bg-white font-body text-navy antialiased">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <SiteHeader />
+    <noscript><style is:inline>header { position: static !important; }</style></noscript>
+    <main id="main-content" tabindex="-1"><slot /></main>
+    <SiteFooter />
+  </body>
+</html>

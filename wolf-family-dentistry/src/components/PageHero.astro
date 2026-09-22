@@ -1,0 +1,10 @@
+---
+import SourceCopy from './SourceCopy.astro';
+interface Props { page: 'about-us' | 'maintain' | 'restore' | 'testimonials' | 'contact-us'; }
+const { page } = Astro.props;
+---
+<section class="page-hero">
+  <div class="page-shell relative">
+    <SourceCopy page={page} block={0} hero />
+  </div>
+</section>

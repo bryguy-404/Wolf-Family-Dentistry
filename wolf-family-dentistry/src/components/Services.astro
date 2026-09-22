@@ -1,0 +1,11 @@
+---
+import SourceCopy from './SourceCopy.astro';
+---
+<section class="relative z-10 -mt-9 pb-10" aria-label="Dental care">
+  <div class="page-shell grid gap-5 md:grid-cols-3">
+    {[2, 3, 4].map((block, i) => <article class="summary-card">
+      <span class:list={['card-number', { 'bg-plum-tint text-plum': i === 0, 'bg-sage text-green-ink': i === 1, 'bg-navy-tint text-navy': i === 2 }]} aria-hidden="true">0{i + 1}</span>
+      <SourceCopy page="home" block={block} />
+    </article>)}
+  </div>
+</section>

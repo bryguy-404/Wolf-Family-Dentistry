@@ -1,0 +1,17 @@
+---
+import content from '../data/source-content.json';
+import linkMigrations from '../data/link-migrations.json';
+interface Props {
+  page: keyof typeof content;
+  block: number;
+  class?: string;
+  hero?: boolean;
+}
+const { page, block, class: className = '', hero = false } = Astro.props;
+const source = content[page].blocks[block];
+// Heading hierarchy changes presentation only; every text node comes from source.
+let html = source.html.replace(/<(\/?)h[1-5](?=[ >])/g, `<$1${hero ? 'h1' : 'h2'}`);
+// Keep the original labels; replace the agency's review gateway with the same business's direct Google destination.
+for (const [legacy, destination] of Object.entries(linkMigrations)) html = html.replaceAll(`href="${legacy}"`, `href="${destination}"`);
+---
+<div class:list={['source-copy', className]} data-source={`${page}:${block}`} set:html={html} />

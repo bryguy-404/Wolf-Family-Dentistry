@@ -6,6 +6,10 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://wolffamilydentistryin.com',
+  trailingSlash: 'always',
+  output: 'static',
+  devToolbar: { enabled: false },
   vite: {
     plugins: [tailwindcss()]
   },

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from './PageHero.astro';
+import SourceCopy from './SourceCopy.astro';
+import AppointmentCTA from './AppointmentCTA.astro';
+import content from '../data/source-content.json';
+interface Props { page: 'maintain' | 'restore'; }
+const { page } = Astro.props;
+const data = content[page];
+---
+<Layout title={data.title} description={data.description}>
+  <PageHero page={page} />
+  <section class="section-space">
+    <div class="page-shell split-layout">
+      <SourceCopy page={page} block={2} class="section-copy" />
+      <img src={`/images/${page}-smile.jpg`} width="900" height="700" alt={page === 'maintain' ? 'Friends smiling together' : 'A smiling couple'} class="feature-image" />
+    </div>
+  </section>
+  <section class="section-space bg-ivory">
+    <div class="page-shell service-list">
+      {[3, 4, 5, 6, 7].map((block, i) => <article class="service-row">
+        <span class="service-number" aria-hidden="true">0{i + 1}</span>
+        <SourceCopy page={page} block={block} />
+      </article>)}
+    </div>
+  </section>
+  <AppointmentCTA page={page} />
+</Layout>

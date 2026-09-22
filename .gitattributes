@@ -1,0 +1,4 @@
+# Preserve captured source evidence and captions byte-for-byte.
+wolf-family-dentistry/migration/source/** -text -whitespace
+wolf-family-dentistry/migration/audit/source/** -text -whitespace
+wolf-family-dentistry/public/media/*.vtt -text -whitespace

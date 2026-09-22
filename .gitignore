@@ -4,6 +4,8 @@ dist/
 .wrangler/
 .loop/
 .asset-review/
+# Local duplicate archives; source files and migration evidence are versioned.
+wolf-family-dentistry/migration/backups/*.zip
 .env*
 .dev.vars*
 !.env.example

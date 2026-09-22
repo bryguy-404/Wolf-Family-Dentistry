@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "source": "https://vid.hellonetcdn.com/vid/in/laporte/biz/inlapo19_30_rev2_iwd_lrg_univ.mp4",
+      "local": "/media/wolf-family-dentistry.mp4",
+      "bytes": 8384958,
+      "sha256": "5ab454276dd799c294a2e3672ee4f32128ffa87cbcbbe2b09afabb0b3c9410b9"
+    },
+    {
+      "source": "https://vid.hellonetcdn.com/vid/in/laporte/biz/inlapo19_30_rev2_iwd1.jpg",
+      "local": "/media/wolf-family-dentistry-poster.jpg",
+      "bytes": 409179,
+      "sha256": "15d1bd0de1e6ef5a70514df6f4f380873bf8328ebc5799786525534db141556e"
+    },
+    {
+      "source": "https://elocallink.tv/m/v/15/getTextTrack.php?mid=179372",
+      "local": "/media/wolf-family-dentistry.en.vtt",
+      "bytes": 2034,
+      "sha256": "118c8ce90e497638df17676be842957292818a166b688da3645c1dc0d6095dc9"
+    }
+  ],
+  "captions": "Original caption wording preserved. Corrected an invalid first-cue start time and added a missing millisecond suffix so native WebVTT can parse every cue.",
+  "resolution": "Only lrg (360p) is available according to the source player sizes endpoint."
+}

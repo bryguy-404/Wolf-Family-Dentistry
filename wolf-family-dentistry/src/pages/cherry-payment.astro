@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import content from '../data/source-content.json';
+---
+<Layout title={content['cherry-payment'].title} description={content['cherry-payment'].description}>
+  <section class="page-hero"><div class="page-shell"><h1>Cherry Payment</h1></div></section>
+  <section class="section-space"><div class="page-shell cherry-widget">
+    <div id="all"></div><div id="hero"></div><div id="calculator"></div><div id="howitworks"></div><div id="testimony"></div><div id="faq"></div>
+    <noscript><p>Enable JavaScript to view Cherry payment options.</p></noscript>
+  </div></section>
+  <script is:inline>
+    (function (w, d, s, o, f, js, fjs) {
+      w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
+      js = d.createElement(s); fjs = d.getElementsByTagName(s)[0];
+      js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    })(window, document, 'script', '_hw', 'https://files.withcherry.com/widgets/widget.js');
+    _hw('init', {
+      debug: false,
+      variables: { slug: 'wolf-family-dentistry', name: 'Wolf Family Dentistry', images: [21], customLogo: '', defaultPurchaseAmount: 2000, customImage: '', imageCategory: 'dental', language: 'en' },
+      styles: { primaryColor: '#17285E', secondaryColor: '#eaf1e7', fontFamily: 'Source Sans 3', headerFontFamily: 'Plus Jakarta Sans' }
+    }, ['hero', 'calculator', 'howitworks', 'faq']);
+  </script>
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SourceCopy from '../components/SourceCopy.astro';
+import ContactForm from '../components/ContactForm.astro';
+import content from '../data/source-content.json';
+const page = content['contact-us'];
+---
+<Layout title={page.title} description={page.description}>
+  <PageHero page="contact-us" />
+  <section class="section-space">
+    <div class="page-shell split-layout">
+      <SourceCopy page="contact-us" block={2} class="section-copy" />
+      <img src="/images/contact-smile.jpg" width="900" height="700" alt="A woman laughing outdoors" class="feature-image" />
+    </div>
+  </section>
+  <section class="section-space bg-ivory">
+    <div class="page-shell split-layout items-start">
+      <SourceCopy page="contact-us" block={3} class="section-copy" />
+      <div class="min-w-0 rounded-[32px] bg-white p-6 shadow-soft sm:p-10">
+        <ContactForm />
+        <SourceCopy page="contact-us" block={5} class="form-notice mt-7" />
+      </div>
+    </div>
+  </section>
+</Layout>
