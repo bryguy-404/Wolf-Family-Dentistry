@@ -8,10 +8,12 @@ import SiteFooter from '../components/SiteFooter.astro';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 const {
   title = 'Wolf Family Dentistry | Comfortable Dental Care in La Porte',
   description = 'Gentle, modern family dentistry in La Porte, Indiana. Call Wolf Family Dentistry to plan your visit.',
+  noindex = false,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -23,6 +25,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />

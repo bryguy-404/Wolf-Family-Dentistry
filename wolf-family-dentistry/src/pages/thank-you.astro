@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Thank You | Wolf Family Dentistry"
+  description="Thank you for reaching out to Wolf Family Dentistry. We will be in touch soon."
+  noindex
+>
+  <section class="thank-you section-space bg-ivory" aria-labelledby="thank-you-heading">
+    <div class="page-shell">
+      <div class="thank-you-card">
+        <div class="confirmation-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 12 4 4L19 6" />
+          </svg>
+        </div>
+        <h1 id="thank-you-heading">Thank you for reaching out.</h1>
+        <p>We will be in touch soon.</p>
+        <a href="/" class="button">Return to home</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .thank-you { min-height: 60vh; display: grid; align-items: center; }
+  .thank-you-card { max-width: 760px; margin-inline: auto; padding: clamp(32px, 6vw, 72px) clamp(24px, 5vw, 64px); border: 1px solid var(--color-sage); border-radius: 32px; background: white; box-shadow: var(--shadow-soft); text-align: center; }
+  .confirmation-icon { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 28px; border-radius: 50%; background: var(--color-sage); color: var(--color-green-ink); }
+  h1 { font-family: var(--font-heading); font-size: clamp(32px, 4.5vw, 52px); font-weight: 800; line-height: 1.15; letter-spacing: -.035em; text-wrap: balance; }
+  p { margin-top: 20px; color: var(--color-muted); font-size: 22px; line-height: 1.6; }
+  .button { margin-top: 32px; }
+</style>
