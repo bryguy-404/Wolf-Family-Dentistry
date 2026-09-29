@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+interface Props { placement: string; label?: string; light?: boolean; compact?: boolean; }
+const { placement, label = 'Call to book your visit', light = false, compact = false } = Astro.props;
+---
+<a href="tel:+12193623730" class:list={['call-button', { light, compact }]} data-call-cta={placement}>
+  <Icon name="phone" />
+  <span><span class="call-label">{label}</span><span class="phone-number" data-phone-number>(219) 362-3730</span></span>
+  {!compact && <Icon name="arrow" />}
+</a>

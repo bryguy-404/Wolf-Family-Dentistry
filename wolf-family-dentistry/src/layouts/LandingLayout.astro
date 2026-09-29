@@ -1,0 +1,25 @@
+---
+import '../styles/landing.css';
+interface Props { title?: string; description?: string; }
+const { title = 'Dentist in La Porte, IN | Wolf Family Dentistry', description = 'Looking for a Dentist in La Porte, IN? Comfortable family dental care, dental cleanings, and general dentistry since 1988. Call (219) 362-3730 to book your visit.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#17285e" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/lora-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <slot name="head" />
+  </head>
+  <body><a class="skip-link" href="#main-content">Skip to content</a><slot /></body>
+</html>

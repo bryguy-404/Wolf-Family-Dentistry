@@ -1,0 +1,104 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import CallButton from '../components/landing/CallButton.astro';
+import Icon from '../components/landing/Icon.astro';
+import source from '../data/source-content.json';
+
+const benefits = [
+  { icon: 'heart' as const, title: 'Comfort comes first', text: 'A gentle approach, a welcoming space, and a team that listens to how you feel.' },
+  { icon: 'sparkle' as const, title: 'Modern care. Personal touch.', text: 'Digital X-rays and modern technology, with time to explain your care clearly.' },
+  { icon: 'people' as const, title: 'More than a patient', text: 'We build lasting relationships. Some of our patients have been with us since 1988.' },
+  { icon: 'wallet' as const, title: 'A little more flexibility', text: 'Cherry payment plans are available. Call us to talk through your options.' },
+];
+const reviews = [
+  { name: 'Evan D.', quote: "Always have a state of the art experience. Top notch customer service. The staff is very highly trained and super friendly. Office is clean and updated. Wouldn't go anywhere else. Dr. Wolf and her amazing team are one of a kind. If you don't go here you are totally missing out. Call them today." },
+  { name: 'Rachel M.', quote: 'As a former dental hygienist, my bar is high for a dental provider for my family. The care we have received from Dr. Wolf and staff over the last 14 plus years has been nothing but exceptional!' },
+  { name: 'Karyl M.', quote: 'I called as an emergency patient and they got me in quickly. Dr. Wolf and her staff are amazing and truly care about their patients.' },
+  { name: 'Scott I.', quote: "Thank you Wolf Dentistry for all your help assisting my mom with her dental needs. The staff went above and beyond to help our 'dental crisis.' We were always greeted with smiles and a positive attitude on every visit. The staff is very friendly, professional and caring. Very strong recommendation...Five Stars." },
+];
+const hours = [['Monday', '9:00 AM – 4:00 PM'], ['Tuesday', '9:00 AM – 4:00 PM'], ['Wednesday', '9:00 AM – 5:00 PM'], ['Thursday', '10:00 AM – 3:00 PM'], ['Friday – Sunday', 'Closed']];
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Dentist', name: 'Wolf Family Dentistry, P.C.',
+  url: new URL('/dentist-la-porte/', Astro.site).href, telephone: '+12193623730', foundingDate: '1988',
+  image: new URL('/images/practice-exterior.jpg', Astro.site).href,
+  address: { '@type': 'PostalAddress', streetAddress: '3550 W Johnson Rd', addressLocality: 'La Porte', addressRegion: 'IN', postalCode: '46350', addressCountry: 'US' },
+  geo: { '@type': 'GeoCoordinates', latitude: 41.6417991, longitude: -86.768307 },
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday'], opens: '09:00', closes: '16:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '09:00', closes: '17:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '10:00', closes: '15:00' },
+  ],
+};
+---
+<LandingLayout>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <header class="landing-header">
+    <div class="shell header-inner">
+      <img class="brand" src="/images/wolf-logo.png" width="980" height="203" alt="Wolf Family Dentistry, P.C." />
+      <div class="header-contact"><span class="header-welcome">New patients welcome</span><CallButton placement="header" label="Let's talk about your smile" compact /></div>
+    </div>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> Your neighborhood dental office · Since 1988</p>
+          <h1 id="landing-headline">Your family dentist<br />in La Porte, IN.<br /><em>Your comfort comes first.</em></h1>
+          <p class="hero-description">A familiar face. A gentler approach. Dental care that feels like it should—with a team that treats you like family.</p>
+          <CallButton placement="hero" />
+          <p class="hours-note" data-office-status>Welcoming new patients · Call during office hours</p>
+          <div class="hero-review"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Kind words. Confident smiles.<small>From our patients on Google</small></span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="photo-outline" aria-hidden="true"></div>
+          <img class="hero-image" src="/images/landing/smile-1200.webp" srcset="/images/landing/smile-640.webp 640w, /images/landing/smile-1200.webp 900w" sizes="(min-width: 900px) 46vw, 100vw" width="900" height="900" alt="A woman enjoying a relaxed, joyful smile" fetchpriority="high" />
+          <div class="comfort-seal"><Icon name="heart" /><span>Where dental care<br />is <em>comfortable.</em></span></div>
+          <div class="photo-location"><Icon name="pin" /><span>Rooted in La Porte.<br /><strong>Here for your family.</strong></span></div>
+        </div>
+      </div>
+    </section>
+    <div class="trust-band"><div class="shell trust-items"><span><Icon name="check" /> Serving families since 1988</span><span><Icon name="check" /> Gentle, personal care</span><span><Icon name="check" /> New patients welcome</span><span><Icon name="check" /> Cherry financing available</span></div></div>
+    <section class="quote-strip shell" aria-label="A patient's experience"><span class="quote-mark" aria-hidden="true">“</span><blockquote>“The care we have received from Dr. Wolf and staff over the last 14 plus years has been nothing but exceptional!”</blockquote><p><strong>Rachel M.</strong><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><small>Google Review</small></p></section>
+    <section class="section shell benefits">
+      <div class="section-heading centered"><p class="eyebrow">A little more care in every visit</p><h2>You deserve to feel<br /><em>at home in the dental chair.</em></h2><p>Whether it’s your first visit or you’ve been with us for years, we make room for your questions, your comfort, and you.</p></div>
+      <div class="benefit-grid">{benefits.map(item => <article><div class="line-icon"><Icon name={item.icon} /></div><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+      <div class="section-call"><CallButton placement="benefits" label="Meet your new dental team" /><p class="hours-note" data-office-status>Call during office hours to plan your visit</p></div>
+    </section>
+    <section class="services-section section">
+      <div class="shell">
+        <div class="section-heading"><p class="eyebrow">Care for every chapter of your smile</p><h2>A healthier smile starts<br /><em>with the everyday.</em></h2></div>
+        <div class="services-grid">
+          <article class="cleaning-feature"><img src="/images/landing/treatment-room.webp" width="640" height="360" alt="A treatment room at Wolf Family Dentistry" loading="lazy" /><div class="cleaning-copy"><span class="service-number">01 / PREVENTIVE CARE</span><h3>Dental Cleanings<br />&amp; Checkups</h3><p>Get back to feeling good about your smile. Regular dental cleanings and exams give your teeth a fresh start and give you time to talk through any concerns.</p><CallButton placement="cleaning" label="Schedule your cleaning" compact /></div></article>
+          <div class="service-list">
+            <article><span class="service-number">02</span><div><h3>General Dentistry</h3><p>Your general dentist for dental exams, digital X-rays, fillings, and a care plan made around your needs.</p></div><Icon name="sparkle" /></article>
+            <article><span class="service-number">03</span><div><h3>Tooth-Colored Restorations</h3><p>Thoughtful restorative care, including tooth-colored fillings and crowns, to help your smile feel like you again.</p></div><Icon name="sparkle" /></article>
+            <article><span class="service-number">04</span><div><h3>Teeth Whitening</h3><p>Thinking about a brighter smile? Talk with our team about professional teeth whitening and your options.</p></div><Icon name="sparkle" /></article>
+            <div class="urgent-note"><strong>Something bothering your smile?</strong><p>Call our dental office to discuss your concern and ask about appointment availability.</p></div>
+          </div>
+        </div>
+        <div class="section-call"><CallButton placement="services" label="Call to schedule your appointment" /></div>
+      </div>
+    </section>
+    <section class="section shell doctor-section">
+      <div class="doctor-images"><img class="team-image" src="/images/landing/practice-team-1200.webp" srcset="/images/landing/practice-team-640.webp 640w, /images/landing/practice-team-1200.webp 1200w" sizes="(min-width: 900px) 50vw, 100vw" width="1200" height="675" alt="Dr. Wolf and the Wolf Family Dentistry team outside their La Porte office" loading="lazy" /><div class="team-caption"><span class="eyebrow">Your smile is in good company</span><span>The Wolf Family Dentistry team</span></div>
+        <div class="video-shell"><video id="practice-video" controls playsinline preload="none" poster="/images/landing/video-poster.webp" aria-label="Meet Dr. Wolf: an introduction to Wolf Family Dentistry"><source src="/media/wolf-family-dentistry.mp4" type="video/mp4" /><track kind="captions" src="/media/wolf-family-dentistry.en.vtt" srclang="en" label="English" /></video></div>
+      </div>
+      <div class="doctor-copy"><p class="eyebrow">A familiar face. A lasting relationship.</p><h2>Meet Dr. Wolf.<br /><em>Your dentist.<br />Your neighbor.</em></h2><p class="doctor-name">Dr. Renee Ostermiller Wolf, DDS</p><p>Dr. Wolf started her La Porte practice in 1988 with a love for getting to know the people behind the smiles.</p><p>She enjoys watching children grow up, seeing families return, and building friendships that last for years. That personal connection is still at the heart of everything we do.</p><p class="doctor-signoff">We’d love to get to know you, too.</p><CallButton placement="doctor" label="New patients welcome—call today" /></div>
+    </section>
+    <section class="reviews-section section"><div class="shell">
+      <div class="section-heading centered"><p class="eyebrow">From our patients, with a smile</p><h2>Good care.<br /><em>In their own words.</em></h2><p>Four five-star Google reviews shared by patients of Wolf Family Dentistry.</p></div>
+      <div class="reviews-grid">{reviews.map((review, index) => <article class="review-card"><div class="review-top"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span class="google-label">Google Review</span></div><blockquote>“{review.quote}”</blockquote><div class="review-author"><span class:list={['avatar', `avatar-${index}`]} aria-hidden="true">{review.name[0]}</span><strong>{review.name}</strong></div></article>)}</div>
+      <div class="section-call"><CallButton placement="reviews" label="Find your dental home" /></div>
+    </div></section>
+    <section class="section shell location-section">
+      <div class="location-copy"><p class="eyebrow">Close to home. Here for you.</p><h2>Your dental home<br /><em>in La Porte.</em></h2><p>Proudly serving La Porte, IN and nearby communities. You’ll find us on West Johnson Road.</p><address><Icon name="pin" /><span><strong>Wolf Family Dentistry, P.C.</strong><br />3550 W Johnson Rd<br />La Porte, IN 46350</span></address><div class="hours-heading"><h3>Office hours</h3><span>Central Time</span></div><dl class="office-hours">{hours.map(([day, time]) => <div><dt>{day}</dt><dd>{time}</dd></div>)}</dl><CallButton placement="location" label="Let's plan your visit" /><p class="hours-note" data-office-status>Call during office hours to plan your visit</p></div>
+      <div class="location-media"><img src="/images/landing/practice-exterior-1200.webp" srcset="/images/landing/practice-exterior-640.webp 640w, /images/landing/practice-exterior-1200.webp 1200w" sizes="(min-width: 900px) 50vw, 100vw" width="1200" height="675" alt="The entrance to Wolf Family Dentistry at 3550 W Johnson Road" loading="lazy" /><iframe src={source.home.embeds[1].src} title="Map showing Wolf Family Dentistry at 3550 W Johnson Rd, La Porte, IN" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    </section>
+    <section class="final-cta"><div class="shell"><p class="eyebrow">A friendly conversation is all it takes</p><h2>Ready for a healthier,<br /><em>more confident smile?</em></h2><p>Let’s make your next dentist appointment feel easy.</p><CallButton placement="final" label="Call Wolf Family Dentistry" light /><p class="hours-note" data-office-status>New patients welcome · Call during office hours</p></div></section>
+  </main>
+  <footer class="landing-footer shell"><div><img class="brand" src="/images/wolf-logo.png" width="980" height="203" alt="Wolf Family Dentistry, P.C." /><p>3550 W Johnson Rd · La Porte, IN 46350</p></div><div><a href="tel:+12193623730" data-call-cta="footer"><span data-phone-number>(219) 362-3730</span></a><a href="/landing-privacy/" data-privacy-link>Privacy policy</a><small>© {new Date().getFullYear()} Wolf Family Dentistry, P.C.</small></div></footer>
+  <div class="mobile-call"><CallButton placement="mobile-sticky" label="Call to book your visit" compact /><span data-office-status>New patients welcome</span></div>
+  <script>
+    import '../scripts/landing';
+  </script>
+</LandingLayout>

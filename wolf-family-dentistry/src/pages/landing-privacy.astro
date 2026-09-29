@@ -1,0 +1,20 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+---
+<LandingLayout title="Landing Page Privacy | Wolf Family Dentistry" description="Privacy information for the Wolf Family Dentistry appointment landing page.">
+  <header class="landing-header"><div class="shell header-inner"><img class="brand" src="/images/wolf-logo.png" width="980" height="203" alt="Wolf Family Dentistry, P.C." /><a href="tel:+12193623730">(219) 362-3730</a></div></header>
+  <main id="main-content" class="shell privacy-content" tabindex="-1">
+    <p class="eyebrow">Wolf Family Dentistry, P.C.</p><h1>Landing page privacy</h1>
+    <p>This notice describes the appointment landing page. It does not replace the practice’s patient privacy notice, which you may request from the office.</p>
+    <h2>Calling the practice</h2><p>This landing page does not include a contact form. Selecting a phone button opens your device’s calling function. Information you choose to share during a call is handled by the practice.</p>
+    <h2>Website and advertising measurement</h2><p>The page records which phone button was selected in the browser. When Google Analytics or Google Ads measurement is enabled, usage information, page visits, advertising identifiers, and phone-button events may be sent to Google to measure advertising performance. Those services may use cookies. A Google forwarding number may be displayed to measure calls resulting from ads. Clicking a phone button does not by itself confirm that a call connected.</p>
+    <p>Campaign parameters in the page address are retained when you open this notice. This page does not copy them into local or session storage. Website hosting and external services may receive technical information such as your IP address and browser details as part of providing their services.</p>
+    <h2>Embedded map and video</h2><p>The location map is provided by Google Maps. Loading or interacting with it connects your browser to Google. The practice video is hosted with this website and is set to load when you choose to play it.</p>
+    <h2>Your choices and questions</h2><p>You can control or block cookies in your browser settings. You can also call the office directly without using the landing page’s phone buttons. For questions about privacy, contact Wolf Family Dentistry, P.C., at (219) 362-3730 or 3550 W Johnson Rd, La Porte, IN 46350.</p>
+    <a href="/dentist-la-porte/" id="privacy-return">Return to the appointment page</a>
+  </main>
+  <script>
+    const back = document.querySelector<HTMLAnchorElement>('#privacy-return');
+    if (back) { const url = new URL(back.href); for (const [key, value] of new URLSearchParams(location.search)) { if (/^utm_(source|medium|campaign|term|content|id)$/.test(key) || ['gclid', 'gbraid', 'wbraid', 'kw'].includes(key)) url.searchParams.set(key, value); } back.href = url.href; }
+  </script>
+</LandingLayout>

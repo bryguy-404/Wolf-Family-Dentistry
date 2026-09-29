@@ -60,3 +60,7 @@ The September 22 deployment fix was verified in a clean Linux x64 container with
 ## Domain cutover audit
 
 The deeper audit archived 91 upload files plus the original video, poster and captions (94 files total), verified all 17 distinct source hyperlink destinations are represented, and removed the agency-hosted video and review gateway dependencies. The patient PDF is the sole PDF found in the public media index and page links. Full scope, evidence and limitations are in [the audit report](wolf-family-dentistry/migration/audit/README.md). The original Hybridge link requires a manual check because it presents a security challenge. Preserve the existing email DNS records during cutover.
+
+## Google Ads landing page
+
+The dedicated call-only landing page is at `/dentist-la-porte/`, with a privacy notice at `/landing-privacy/`. It is separate from the main-site navigation and defaults to noindex. See [landing page implementation and launch notes](wolf-family-dentistry/LANDING_PAGE.md) for the brief coverage, optional Google measurement environment variables, client confirmations, and browser verification.
