@@ -1,4 +1,6 @@
 ---
+import GoogleTagManagerHead from '../components/GoogleTagManagerHead.astro';
+import GoogleTagManagerBody from '../components/GoogleTagManagerBody.astro';
 import '../styles/landing.css';
 interface Props { title?: string; description?: string; }
 const { title = 'Dentist in La Porte, IN | Wolf Family Dentistry', description = 'Looking for a Dentist in La Porte, IN? Comfortable family dental care, dental cleanings, and general dentistry since 1988. Call (219) 362-3730 to book your visit.' } = Astro.props;
@@ -7,6 +9,7 @@ const { title = 'Dentist in La Porte, IN | Wolf Family Dentistry', description =
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <GoogleTagManagerHead />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, follow" />
     <meta name="theme-color" content="#17285e" />
@@ -21,5 +24,7 @@ const { title = 'Dentist in La Porte, IN | Wolf Family Dentistry', description =
     <meta property="og:type" content="website" />
     <slot name="head" />
   </head>
-  <body><a class="skip-link" href="#main-content">Skip to content</a><slot /></body>
+  <body>
+    <GoogleTagManagerBody />
+    <a class="skip-link" href="#main-content">Skip to content</a><slot /></body>
 </html>
