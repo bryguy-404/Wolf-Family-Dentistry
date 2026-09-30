@@ -3,9 +3,10 @@ export function officeMessage(date = new Date()) {
   const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(date);
   const value = (key: string) => parts.find(part => part.type === key)?.value || '';
   const minutes = Number(value('hour')) * 60 + Number(value('minute'));
-  const schedule: Record<string, [number, number]> = { Mon: [540, 960], Tue: [540, 960], Wed: [540, 1020], Thu: [600, 900] };
+  const schedule: Record<string, [number, number]> = { Mon: [540, 960], Tue: [540, 960], Wed: [540, 1020], Thu: [540, 960] };
   const today = schedule[value('weekday')];
-  return today && minutes >= today[0] && minutes < today[1]
+  const isThursdayLunch = value('weekday') === 'Thu' && minutes >= 780 && minutes < 840;
+  return today && minutes >= today[0] && minutes < today[1] && !isThursdayLunch
     ? 'Within office hours · Call to plan your visit'
     : 'Outside office hours · Please call Mon–Thu during office hours';
 }

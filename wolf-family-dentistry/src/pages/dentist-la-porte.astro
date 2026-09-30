@@ -16,7 +16,7 @@ const reviews = [
   { name: 'Karyl M.', quote: 'I called as an emergency patient and they got me in quickly. Dr. Wolf and her staff are amazing and truly care about their patients.' },
   { name: 'Scott I.', quote: "Thank you Wolf Dentistry for all your help assisting my mom with her dental needs. The staff went above and beyond to help our 'dental crisis.' We were always greeted with smiles and a positive attitude on every visit. The staff is very friendly, professional and caring. Very strong recommendation...Five Stars." },
 ];
-const hours = [['Monday', '9:00 AM – 4:00 PM'], ['Tuesday', '9:00 AM – 4:00 PM'], ['Wednesday', '9:00 AM – 5:00 PM'], ['Thursday', '10:00 AM – 3:00 PM'], ['Friday – Sunday', 'Closed']];
+const hours = [['Monday', '9:00 AM – 4:00 PM'], ['Tuesday', '9:00 AM – 4:00 PM'], ['Wednesday', '9:00 AM – 5:00 PM'], ['Thursday', '9:00 AM – 4:00 PM'], ['Friday – Sunday', 'Closed']];
 const schema = {
   '@context': 'https://schema.org', '@type': 'Dentist', name: 'Wolf Family Dentistry, P.C.',
   url: new URL('/dentist-la-porte/', Astro.site).href, telephone: '+12193623730', foundingDate: '1988',
@@ -26,7 +26,8 @@ const schema = {
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday'], opens: '09:00', closes: '16:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '09:00', closes: '17:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '10:00', closes: '15:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '09:00', closes: '13:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '14:00', closes: '16:00' },
   ],
 };
 ---
@@ -91,7 +92,7 @@ const schema = {
       <div class="section-call"><CallButton placement="reviews" label="Find your dental home" /></div>
     </div></section>
     <section class="section shell location-section">
-      <div class="location-copy"><p class="eyebrow">Close to home. Here for you.</p><h2>Your dental home<br /><em>in La Porte.</em></h2><p>Proudly serving La Porte, IN and nearby communities. You’ll find us on West Johnson Road.</p><address><Icon name="pin" /><span><strong>Wolf Family Dentistry, P.C.</strong><br />3550 W Johnson Rd<br />La Porte, IN 46350</span></address><div class="hours-heading"><h3>Office hours</h3><span>Central Time</span></div><dl class="office-hours">{hours.map(([day, time]) => <div><dt>{day}</dt><dd>{time}</dd></div>)}</dl><CallButton placement="location" label="Let's plan your visit" /><p class="hours-note" data-office-status>Call during office hours to plan your visit</p></div>
+      <div class="location-copy"><p class="eyebrow">Close to home. Here for you.</p><h2>Your dental home<br /><em>in La Porte.</em></h2><p>Proudly serving La Porte, IN and nearby communities. You’ll find us on West Johnson Road.</p><address><Icon name="pin" /><span><strong>Wolf Family Dentistry, P.C.</strong><br />3550 W Johnson Rd<br />La Porte, IN 46350</span></address><div class="hours-heading"><h3>Office hours</h3><span>Central Time</span></div><dl class="office-hours">{hours.map(([day, time]) => <div><dt>{day}</dt><dd>{time}</dd></div>)}</dl><p class="hours-note">Thursday lunch: 1–2 PM</p><CallButton placement="location" label="Let's plan your visit" /><p class="hours-note" data-office-status>Call during office hours to plan your visit</p></div>
       <div class="location-media"><img src="/images/landing/practice-exterior-1200.webp" srcset="/images/landing/practice-exterior-640.webp 640w, /images/landing/practice-exterior-1200.webp 1200w" sizes="(min-width: 900px) 50vw, 100vw" width="1200" height="675" alt="The entrance to Wolf Family Dentistry at 3550 W Johnson Road" loading="lazy" /><iframe src={source.home.embeds[1].src} title="Map showing Wolf Family Dentistry at 3550 W Johnson Rd, La Porte, IN" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
     </section>
     <section class="final-cta"><div class="shell"><p class="eyebrow">A friendly conversation is all it takes</p><h2>Ready for a healthier,<br /><em>more confident smile?</em></h2><p>Let’s make your next dentist appointment feel easy.</p><CallButton placement="final" label="Call Wolf Family Dentistry" light /><p class="hours-note" data-office-status>New patients welcome · Call during office hours</p></div></section>

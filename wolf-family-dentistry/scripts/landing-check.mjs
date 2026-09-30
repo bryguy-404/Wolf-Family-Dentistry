@@ -55,7 +55,7 @@ try {
  await page.waitForFunction(()=>document.querySelector('video').currentTime>0);
  await page.locator('video').evaluate(video=>{ if(video instanceof HTMLVideoElement) video.pause(); });
  // Verify office hours at boundaries, weekend, winter, and across visitor timezones.
- for(const [date,open] of [['2026-09-29T13:59:00Z',false],['2026-09-29T14:00:00Z',true],['2026-09-29T21:00:00Z',false],['2026-09-30T21:30:00Z',true],['2026-10-01T14:30:00Z',false],['2026-10-01T15:00:00Z',true],['2026-10-02T16:00:00Z',false],['2026-01-05T15:00:00Z',true]]){
+ for(const [date,open] of [['2026-09-29T13:59:00Z',false],['2026-09-29T14:00:00Z',true],['2026-09-29T21:00:00Z',false],['2026-09-30T21:30:00Z',true],['2026-10-01T13:59:00Z',false],['2026-10-01T14:00:00Z',true],['2026-10-01T14:30:00Z',true],['2026-10-01T20:59:00Z',true],['2026-10-01T21:00:00Z',false],['2026-10-01T15:00:00Z',true],['2026-10-01T17:59:00Z',true],['2026-10-01T18:00:00Z',false],['2026-10-01T18:59:00Z',false],['2026-10-01T19:00:00Z',true],['2026-09-29T18:30:00Z',true],['2026-10-02T16:00:00Z',false],['2026-01-05T15:00:00Z',true]]){
   await page.clock.install({time:new Date(date)});
   await page.goto(`${base}/dentist-la-porte/`);
   await page.waitForFunction(()=>Array.isArray(window.dataLayer));
